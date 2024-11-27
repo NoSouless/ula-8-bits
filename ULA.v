@@ -1,52 +1,52 @@
-module AND_16bit(output [15:0] result, input [15:0] a, b);
+module AND_16bit(output [15:0] result, input [7:0] a, b);
     assign result = a & b;
 endmodule
 
-module OR_16bit(output [15:0] result, input [15:0] a, b);
+module OR_16bit(output [15:0] result, input [7:0] a, b);
     assign result = a | b;
 endmodule
 
-module XOR_16bit(output [15:0] result, input [15:0] a, b);
+module XOR_16bit(output [15:0] result, input [7:0] a, b);
     assign result = a ^ b;
 endmodule
 
-module NAND_16bit(output [15:0] result, input [15:0] a, b);
+module NAND_16bit(output [15:0] result, input [7:0] a, b);
     assign result = ~(a & b);
 endmodule
 
-module NOR_16bit(output [15:0] result, input [15:0] a, b);
+module NOR_16bit(output [15:0] result, input [7:0] a, b);
     assign result = ~(a | b);
 endmodule
 
-module ADD_16bit(output [15:0] result, output carry_out, input [15:0] a, b, input carry_in);
+module ADD_16bit(output [15:0] result, output carry_out, input [7:0] a, b, input carry_in);
     assign {carry_out, result} = a + b + carry_in;
 endmodule
 
-module SUB_16bit(output [15:0] result, output borrow_out, input [15:0] a, b, input borrow_in);
+module SUB_16bit(output [15:0] result, output borrow_out, input [7:0] a, b, input borrow_in);
     assign {borrow_out, result} = a - b - borrow_in;
 endmodule
 
-module INC_16bit(output [15:0] result, input [15:0] a);
+module INC_16bit(output [15:0] result, input [7:0] a);
     assign result = a + 1;
 endmodule
 
-module MUL_16bit(output [15:0] result, input [15:0] a, b);
+module MUL_16bit(output [15:0] result, input [7:0] a, b);
     assign result = a * b;
 endmodule
 
-module DIV_16bit(output [15:0] result, input [15:0] a, b);
+module DIV_16bit(output [15:0] result, input [7:0] a, b);
     assign result = a / b;
 endmodule
 
-module EQ_16bit(output result, input [15:0] a, b);
+module EQ_16bit(output result, input [7:0] a, b);
     assign result = (a == b);
 endmodule
 
-module GE_16bit(output result, input [15:0] a, b);
+module GE_16bit(output result, input [7:0] a, b);
     assign result = (a >= b);
 endmodule
 
-module LE_16bit(output result, input [15:0] a, b);
+module LE_16bit(output result, input [7:0] a, b);
     assign result = (a <= b);
 endmodule
 
@@ -66,7 +66,7 @@ module MUX16to1_16bit(output [15:0] result, input [15:0] and_res, or_res, xor_re
                     (op == 4'b1100) ? le_res : 16'b0; // 1100 = LE
 endmodule
 
-module ULA(output [15:0] result, input [15:0] a, b, input [3:0] op);
+module ULA(output [15:0] result, input [7:0] a, b, input [3:0] op);
     wire [15:0] and_res, or_res, xor_res, nand_res, nor_res, add_res, sub_res, inc_res, mul_res, div_res, eq_res;
     wire ge_res, le_res;
     wire carry_out, borrow_out;
